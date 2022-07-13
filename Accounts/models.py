@@ -13,6 +13,13 @@ _genders = [("m","Male"),
 _bg = [("a","A"),
        ("b","B"),
        ("o","O")]
+
+_year = [
+    (1,"First"),
+    (2,"Second"),
+    (3,"Third"),
+    (4,"Fourth"),
+]
 class User(AbstractUser):
     # id = models.BigAutoField(primary_key=True)
     # first_name
@@ -49,3 +56,8 @@ class Student(models.Model):
 class Teacher(models.Model):
     user = models.OneToOneField(to = User,on_delete=models.CASCADE)
     specialization = models.CharField(max_length = 20)
+
+class Sections(models.Model):
+    faculty = models.ForeignKey(to=Teacher,on_delete=models.CASCADE)
+    year = models.IntegerField(choices=_year)
+    name = models.CharField(max_length=2)

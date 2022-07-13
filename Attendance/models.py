@@ -75,7 +75,9 @@ class Collection():
         else:
             raise ValueError("Undefined values or fields")
     
-    def filter(self):
+    def filter(self,params):
+        '''Params = {"from":date(),"to":date(),"student":id}'''
+        chunk = self._collection.find(params)
         pass
     
     def delete(self):
