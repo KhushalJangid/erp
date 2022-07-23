@@ -1,0 +1,79 @@
+:root{
+    --accent10: rgba(0, 138, 255, 1);
+    --accent9: rgba(0, 138, 255, 0.9);
+    --accent8: rgba(0, 138, 255, 0.8);
+    --accent7: rgba(0, 138, 255, 0.7);
+    --accent6: rgba(0, 138, 255, 0.6);
+    --accent5: rgba(0, 138, 255, 0.5);
+    --accent4: rgba(0, 138, 255, 0.4);
+    --accent3: rgba(0, 138, 255, 0.3);
+    --accent2: rgba(0, 138, 255, 0.2);
+    --accent1: rgba(0, 138, 255, 0.1);
+
+    --element-outline: rgba(0,0,0,0.2);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+.user-interactive:hover{
+    transform: scale(1.05, 1.05);
+}
+.user-interactive:active{
+    transform: scale(0.95, 0.95);
+}
+
+body{
+    background: url("wave_bg.svg");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: right;
+}
+
+header{
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(30px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid var(--element-outline);
+    padding: 10px;
+}
+
+#header-tools{
+    float: right;
+    margin-right: 10px;
+}
+
+#header-tools .icon{
+    height: 18px;
+    margin: 1px 10px;
+}
+
+.logo-in-header{
+    height: 20px;
+}
+
+.form-submit{
+    background: var(--accent10);
+    color: white;
+    border-radius: 4px;
+    height: 32px;
+    width: 100px;
+    outline: none;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+}
+
