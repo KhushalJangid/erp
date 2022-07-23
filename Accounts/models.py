@@ -45,8 +45,8 @@ class Student(models.Model):
     enrollNumber = models.IntegerField()
     rollno = models.CharField(null=True,unique=True,max_length=15)
     specialization = models.CharField(max_length = 20)
-    year = models.IntegerField()
-    sem = models.IntegerField()
+    # year = models.IntegerField()
+    # sem = models.IntegerField()
     section = models.CharField(max_length=2)
     passout = models.IntegerField()
     #? Personal Details
@@ -57,7 +57,8 @@ class Teacher(models.Model):
     user = models.OneToOneField(to = User,on_delete=models.CASCADE)
     specialization = models.CharField(max_length = 20)
 
-class Sections(models.Model):
+class Class(models.Model):
     faculty = models.ForeignKey(to=Teacher,on_delete=models.CASCADE)
-    year = models.IntegerField(choices=_year)
-    name = models.CharField(max_length=2)
+    # students = models.
+    # year = models.IntegerField(choices=_year)
+    title = models.CharField(max_length=2)

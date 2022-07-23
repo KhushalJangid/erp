@@ -8,9 +8,6 @@ def loginUser(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
-        user = User.objects.create(username=username)
-        user.set_password(password)
-        user.save()
         return HttpResponse("Accepted")
 
     else:
