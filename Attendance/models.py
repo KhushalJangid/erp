@@ -1,6 +1,4 @@
-from ast import Str
 import pymongo
-from regex import D
 
 # Create your models here.
 
@@ -14,7 +12,7 @@ Database(Attendance) => Collection(Class_Section) => Document (Per day attendanc
 Database(Attendance) => Collection(Faculty) => Document (Per day attendance)
 document = {
     _id: ...,
-    date : 01/01/2001,
+    date : 01-01-2001,
     attendance :{
             studentA : 1,
             studentB : 1,

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/attendance_teacher.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/dashboard_teacher.css' %}" />
+{% endblock head %}
+{% block title %}Attendance{% endblock title %}
+{% block body %}
+<aside id="sidebar" class="expanded">
+
+</aside>
+<main id="workspace" class="collapsed">
+    <h1 id="workspace-title">Attendance</h1>
+    <section class="notification red"><span>This is an example of a red message</span><button
+            class="dismiss user-interactive"><img src="{% static 'icons/cross.svg'%}" height="24px" /></button>
+    </section>
+    <section class="notification blue"><span>This is an example of a blue message</span></section>
+    <section class="btn-grp-type1">
+        <table>
+            <tr>
+                <td>
+                    <button class="user-interactive">
+                        View Trends
+                    </button>
+                </td>
+                <td>
+                    <button class="user-interactive">
+                        Request Other Attendance
+                    </button>
+                </td>
+                <td>
+                    <button class="user-interactive">
+                        Extra Class
+                    </button>
+                </td>
+                <td>
+                    <button class="user-interactive">
+                        Merge Classes
+                    </button>
+                </td>
+                <td>
+                    <button class="user-interactive">
+                        Applications
+                    </button>
+                </td>
+                <td>
+                    <button class="user-interactive">
+                        Submit Attendance
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section id="classes">
+        <h2 class="section-title">Classes</h2>
+        <form class="ib">
+            <!--'ib' stands for inline-block-->
+            <input type="date" />
+            <select>
+                <option value="marked">Marked</option>
+                <option value="unmarked">Unmarked</option>
+                <option value="all">All</option>
+            </select>
+        </form>
+    </section>
+</main>
+{% endblock body %}

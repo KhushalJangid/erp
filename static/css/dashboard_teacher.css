@@ -1,0 +1,62 @@
+:root{
+    --light-bg: rgb(235, 235, 235);
+}
+body{
+    background-color: var(--light-bg);
+}
+#sidebar{
+    position: fixed;
+    top: 65px;
+    left: 15px;
+    bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+#sidebar.expanded{
+    min-width: 250px;
+    border-radius: 8px;
+}
+#workspace{
+    position: fixed;
+    top: 65px;
+    right: 15px;
+    bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    backdrop-filter: blur(20px);
+    padding: 15px 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+#workspace.collapsed{
+    left: 280px;
+}
+#workspace-title{
+    font-size: 40px;
+    margin: 20px 0;
+}
+section.btn-grp-type1{
+    overflow-x: auto;
+}
+section.btn-grp-type1 button{
+    margin: 10px 5px;
+    background-color: white;
+    border: 1px solid var(--element-outline);
+    height: 140px;
+    width: 110px;
+    border-radius: 6px;
+    transition: 150ms;
+    padding: 10px;
+    font-size: 12px;
+}
+section.btn-grp-type1 button:hover{
+    color: var(--accent10);
+    box-shadow: 0 4px 5px var(--accent2);
+}
+section.btn-grp-type1 button:focus{
+    border: 2px solid var(--accent10);
+}
+section h2.section-title{
+    font-size: 30px;
+}

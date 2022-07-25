@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/add_faculty.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/add_student.css' %}" />
+{% endblock head %}
+{% block title %}Add a Student{% endblock title %}
+{% block body %}
+<div class="d-flex p-8">
+    <form method="post" class="m-auto">
+        {% csrf_token %}
+        <div class="glass">
+            <h1 style="font-size:36px; padding:2rem;">Login</h1>
+            <div class="d-flex mv-5">
+                <h2 class="form-label">Username</h2>
+                <input name="username" type="text" class="form-input">
+            </div>
+            <div class="d-flex mv-5">
+                <h2 class="form-label">Password</h2>
+                <input name="password" type="password" class="form-input">
+            </div>
+            <button class="btn" type="submit">Login</button>
+        </div>
+    </form>
+</div>
+
+<script src="" async defer></script>
+{% endblock body %}

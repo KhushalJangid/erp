@@ -30,9 +30,9 @@ class User(AbstractUser):
     gender = models.CharField(max_length=10,choices=_genders)
     email = models.EmailField(blank=True,null=True,unique=False)
     phone = models.CharField(blank=True,null=True,unique=True,max_length=15)
-    dob = models.DateField()
+    dob = models.DateField(auto_now=True)
     address = models.TextField(blank=True,null=True,max_length=200)
-    aadharno = models.IntegerField(unique=True,null=True,blank=True)
+    # aadharno = models.IntegerField(unique=True,null=True,blank=True)
     post = models.CharField(max_length=10,choices=_posts)
     # username = models.CharField(max_length=15,unique=True)
 
@@ -41,24 +41,26 @@ class User(AbstractUser):
 class Student(models.Model):
     user = models.OneToOneField(to = User,on_delete=models.CASCADE)
     # ? Academic Details
-    admNumber = models.CharField(max_length=15)
-    enrollNumber = models.IntegerField()
+    # admNumber = models.CharField(max_length=15)
+    # enrollNumber = models.IntegerField()
     rollno = models.CharField(null=True,unique=True,max_length=15)
-    specialization = models.CharField(max_length = 20)
+    # specialization = models.CharField(max_length = 20)
     # year = models.IntegerField()
     # sem = models.IntegerField()
+    _class = models.IntegerField()
     section = models.CharField(max_length=2)
-    passout = models.IntegerField()
+    # passout = models.IntegerField()
+    
     #? Personal Details
-    bloodGroup = models.CharField(max_length=3,choices=_bg)
+    # bloodGroup = models.CharField(max_length=3,choices=_bg)
 
 
-class Teacher(models.Model):
+class Faculty(models.Model):
     user = models.OneToOneField(to = User,on_delete=models.CASCADE)
-    specialization = models.CharField(max_length = 20)
+    specialization = models.CharField(max_length = 20,null=True,blank=True)
+    classes = models.CharField(max_length=250,null=True,blank=True)
 
-class Class(models.Model):
-    faculty = models.ForeignKey(to=Teacher,on_delete=models.CASCADE)
-    # students = models.
-    # year = models.IntegerField(choices=_year)
-    title = models.CharField(max_length=2)
+# class Class(models.Model):
+#     faculty = models.ForeignKey(to=Faculty,on_delete=models.CASCADE)
+#     year = models.IntegerField(choices=_year)
+#     title = models.CharField(max_length=2)

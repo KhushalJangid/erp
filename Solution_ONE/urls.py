@@ -16,13 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from Accounts.views import home
 
 admin.site.site_header = "Solution ONE"
 admin.site.site_title = "Solution ONE | Admin"
 admin.site.index_title = "Welcome to Admin Control Pannel"
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("",home),
+    path("admin/", admin.site.urls),
     path("accounts/",include("Accounts.urls")),
     path("attendance/",include("Attendance.urls")),
 ]

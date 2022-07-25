@@ -1,6 +1,6 @@
 # from cProfile import label
 from django.contrib import admin
-from .models import User
+from .models import User, Student, Faculty
 from .forms import UserChangeForm, UserCreationForm
 # Register your models here.
 from django.contrib.auth.admin import UserAdmin
@@ -35,3 +35,5 @@ class AccountAdmin(UserAdmin):
     ordering =()
 
 admin.site.register(User,AccountAdmin)
+admin.site.register(Student)
+admin.site.register(Faculty)

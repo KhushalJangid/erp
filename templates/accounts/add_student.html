@@ -1,80 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/add_student.css' %}" />
+{% endblock head %}
+{% block title %}Add a Student{% endblock title %}
+{% block body %}
+<main>
 
-    <link rel="stylesheet" type="text/css" href="index.css"/>
-    <link rel="stylesheet" type="text/css" href="add_student.css"/>
-    <title>Add a Student</title>
-</head>
-<body>
-    <header>
-        <img src="logo.svg" class="logo-in-header">
-            
-        <nav id="header-tools">
-           <img src="icons/info-circle.svg" class="icon user-interactive">
-           <img src="icons/about-icon.svg" class="icon user-interactive">
-        </nav>
-    </header>
+    <div id="outer-form-wrap">
+        <section class="form-title"><img src="{% static 'icons/back-arrow.svg'%}" class="back-arrow user-interactive">
+            <h1>Add a student</h1>
+        </section>
+        <hr class="form-title-divider">
+        <form method="post" id="add-student-form">
+            {% csrf_token %}
+            <table width="100%">
+                <tr>
+                    <td><label for="name">Name</label></td>
+                    <!--Please fill the "for" attribute accordingly-->
+                    <td align="right"><input id="name" name="name" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><label for="name">Aadhar No</label></td>
+                    <!--Please fill the "for" attribute accordingly-->
+                    <td align="right"><input id="aadhar" name="aadhar" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><label for="class">Class</label></td>
+                    <!--Please fill the "for" attribute accordingly-->
+                    <td align="right">
+                        <select name="class" id="class">
+                            <option value="1">1st</option>
+                            <option value="2">2nd</option>
+                            <option value="3">3rd</option>
+                            <option value="4">4th</option>
+                            <option value="5">5th</option>
+                            <option value="6">6th</option>
+                            <option value="7">7th</option>
+                            <option value="8">8th</option>
+                            <option value="9">9th</option>
+                            <option value="10">10th</option>
+                            <option value="11">11th</option>
+                            <option value="12">12th</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="section">Section</label></td>
+                    <!--Please fill the "for" attribute accordingly-->
+                    <td align="right">
+                        <select name="section" id="section">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td align="right"><input type="submit" class="form-submit user-interactive" value="Add" /></td>
+                </tr>
+            </table>
 
-    <main>
+        </form>
+    </div>
 
-        <div id="outer-form-wrap">
-            <section class="form-title"><img src="icons/back-arrow.svg" class="back-arrow user-interactive"><h1>Add a student</h1></section>
-            <hr class="form-title-divider">
-            <form action="post" id="add-student-form">
-                <table width="100%">
-                    <tr>
-                        <td><label for="">Name</label></td><!--Please fill the "for" attribute accordingly-->
-                        <td align="right"><input type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td><label for="">Class</label></td><!--Please fill the "for" attribute accordingly-->
-                        <td align="right">
-                            <select>
-                                <option value="1">1st</option>
-                                <option value="2">2nd</option>
-                                <option value="3">3rd</option>
-                                <option value="4">4th</option>
-                                <option value="5">5th</option>
-                                <option value="6">6th</option>
-                                <option value="7">7th</option>
-                                <option value="8">8th</option>
-                                <option value="9">9th</option>
-                                <option value="10">10th</option>
-                                <option value="11">11th</option>
-                                <option value="12">12th</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label for="">Section</label></td><!--Please fill the "for" attribute accordingly-->
-                        <td align="right">
-                            <select>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                                <option value="E">E</option>
-                                <option value="F">F</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td align="right"><input type="submit" class="form-submit user-interactive" value="Add"/></td>
-                    </tr>
-                </table>
-                
-            </form>
-        </div>
+</main>
 
-    </main>
+<footer>
 
-    <footer>
-
-    </footer>
-</body>
-</html>
+</footer>
+{% endblock body %}

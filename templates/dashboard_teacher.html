@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/dashboard_teacher.css' %}" />
+{% endblock head %}
+{% block title %}Dashboard{% endblock title %}
+{% block body %}
+<aside id="sidebar" class="expanded">
+
+</aside>
+<main id="workspace" class="collapsed">
+    <h1 id="workspace-title">Dashboard</h1>
+</main>
+{% endblock body%}
