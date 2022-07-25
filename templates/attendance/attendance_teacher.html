@@ -11,7 +11,9 @@
 </aside>
 <main id="workspace" class="collapsed">
     <h1 id="workspace-title">Attendance</h1>
-    <section class="notification red"><span>This is an example of a red message</span><button class="dismiss user-interactive"><img src="icons/cross.svg" height="24px"/></button></section>
+    <section class="notification red"><span>This is an example of a red message</span><button
+            class="dismiss user-interactive"><img src="{% static 'icons/cross.svg'%}" height="24px" /></button>
+    </section>
     <section class="notification blue"><span>This is an example of a blue message</span></section>
     <section class="btn-grp-type1">
         <table>
@@ -51,7 +53,8 @@
     </section>
     <section id="classes">
         <h2 class="section-title">Classes</h2>
-        <form class="ib"><!--'ib' stands for inline-block-->
+        <form class="ib">
+            <!--'ib' stands for inline-block-->
             <button class="theme" type="button">Today</button>
             <select class="theme">
                 <option value="marked">Marked</option>
