@@ -33,3 +33,56 @@ section.notification button.dismiss{
 #classes form.ib{
     float: right;
 }
+#classes-viewer{
+    border-radius: 8px;
+    border: 1px solid var(--element-outline);
+    overflow: hidden;
+}
+#classes-viewer tr:nth-child(2n+1){
+    background-color: white;
+}
+#classes-viewer td{
+    padding: 20px 10px;
+}
+#classes-viewer td.class-details{
+    padding: 20px 10px 20px 20px;
+}
+#classes-viewer span.class-name{
+    color: var(--accent10);
+    display: block;
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+#classes-viewer span.class-identifier{
+    font-weight: bold;
+    margin-left: 4px;
+}
+#classes-viewer span.no-of-students{
+    font-size: 16px;
+    color: grey;
+}
+#classes-viewer span.student-count{
+    font-size: 16px;
+    margin-left: 4px;
+}
+#classes-viewer td.absent-details, #classes-viewer td.present-details{
+    text-align: right;
+}
+#classes-viewer span.absent-text, #classes-viewer span.present-text{
+    font-weight: bold;
+    font-size: 17px;
+    display: block;
+    margin-bottom: 6px;
+}
+#classes-viewer span.absent-count, #classes-viewer span.present-count{
+    font-size: 16px;
+}
+#classes-viewer td.absent-details{
+    color: red;
+}
+#classes-viewer td.present-details{
+    color: var(--smooth-green);
+}
+#classes-viewer td.attendance-trend{
+    
+}

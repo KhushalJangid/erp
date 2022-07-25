@@ -11,9 +11,7 @@
 </aside>
 <main id="workspace" class="collapsed">
     <h1 id="workspace-title">Attendance</h1>
-    <section class="notification red"><span>This is an example of a red message</span><button
-            class="dismiss user-interactive"><img src="{% static 'icons/cross.svg'%}" height="24px" /></button>
-    </section>
+    <section class="notification red"><span>This is an example of a red message</span><button class="dismiss user-interactive"><img src="icons/cross.svg" height="24px"/></button></section>
     <section class="notification blue"><span>This is an example of a blue message</span></section>
     <section class="btn-grp-type1">
         <table>
@@ -53,15 +51,40 @@
     </section>
     <section id="classes">
         <h2 class="section-title">Classes</h2>
-        <form class="ib">
-            <!--'ib' stands for inline-block-->
-            <input type="date" />
-            <select>
+        <form class="ib"><!--'ib' stands for inline-block-->
+            <button class="theme" type="button">Today</button>
+            <select class="theme">
                 <option value="marked">Marked</option>
                 <option value="unmarked">Unmarked</option>
                 <option value="all">All</option>
             </select>
         </form>
+        <table id="classes-viewer" width="100%" cellspacing="0">
+            <tr>
+                <td class="class-details">
+                    <span class="class-name">Class<span class="class-identifier">1A</span></span>
+                    <span class="no-of-students">Total Students:<span class="student-count">64</span></span>
+                </td>
+                <td class="absent-details">
+                    <span class="absent-text">Absent</span>
+                    <span class="absent-count">5</span>
+                </td>
+                <td class="present-details">
+                    <span class="present-text">Present</span>
+                    <span class="present-count">59</span>
+                </td>
+                <td class="attendance-trend">
+                    <div class="progress-container">
+                        <div class="progress-line"></div>
+                    </div>
+                    <span class="progress-percentage"><span class="percentage-count">92</span>%</span>
+                </td>
+                <td>
+                    <button>View</button>
+                    <button>Edit</button>
+                </td>
+            </tr>
+        </table>
     </section>
 </main>
 {% endblock body %}
