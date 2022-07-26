@@ -4,6 +4,6 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path("",views.home),
-    path("faculty/<str:class>/<str:section>",login_required(views.Faculty.as_view())),
+    path("faculty/<str:class>/<str:section>",login_required(views.FacultyView.as_view())),
     # path("/<str:date>/<str:section>", views.product, name='product'),
 ]
