@@ -63,18 +63,22 @@
             </select>
         </form>
         <table id="classes-viewer" width="100%" cellspacing="0">
+            {%for key,values in data.items%}
+            {% if values.status %}
             <tr>
                 <td class="class-details">
-                    <span class="class-name">Class<span class="class-identifier">1A</span></span>
-                    <span class="no-of-students">Total Students:<span class="student-count">64</span></span>
+                    <span class="class-name">Class<span class="class-identifier">{{values.class}}
+                            {{values.section}}</span></span>
+                    <span class="no-of-students">Total Students:<span
+                            class="student-count">{{values.total}}</span></span>
                 </td>
                 <td class="absent-details">
                     <span class="absent-text">Absent</span>
-                    <span class="absent-count">5</span>
+                    <span class="absent-count">{{values.absent}}</span>
                 </td>
                 <td class="present-details">
                     <span class="present-text">Present</span>
-                    <span class="present-count">59</span>
+                    <span class="present-count">{{values.present}}</span>
                 </td>
                 <td class="attendance-trend">
                     <div class="progress-container">
@@ -87,6 +91,9 @@
                     <button>Edit</button>
                 </td>
             </tr>
+            {% else %}
+            {% endif %}
+            {% endfor %}
         </table>
     </section>
 </main>

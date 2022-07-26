@@ -24,6 +24,7 @@ def home(request):
         pass
     elif request.user.post == "fc":
         context = {}
+        dic = {}
         user = request.user
         data = Faculty.objects.get(user=user)
         meta = data.classes
@@ -38,16 +39,22 @@ def home(request):
                 total = len(att)
                 present = att.count(1)
                 absent = total - present
-                context[_class] = {"status":status,
-                                   "total": total,
-                                   "present": present,
-                                   "absent": absent,
-                                   }
+                c = _class.split("_")
+                dic[_class] = {"status":status,
+                               "class" : c[0],
+                               "section": c[-1].upper(),
+                                "total": total,
+                                "present": present,
+                                "absent": absent,
+                                }
             else :
-                context[_class] = {"status":status,}
-        print(context)
-        return HttpResponse(dumps(context))
-        # return render(request,"attendance/attendance_teacher.html")
+                c = _class.split("_")
+                dic[_class] = {"status":status,
+                               "class" : c[0],
+                               "section": c[-1].upper(),
+                               }
+        context["data"] = dic
+        return render(request,"attendance/attendance_teacher.html",context=context)
     else:
         pass
     return render(request,"login.html")
