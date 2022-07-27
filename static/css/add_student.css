@@ -29,6 +29,10 @@
     transition: 150ms;
 }
 
+#outer-form-wrap .form-title .back-arrow:focus{
+    filter: drop-shadow(0 2px 0 2px var(--accent9));
+}
+
 #outer-form-wrap .form-title h1{
     display: inline-block;
     font-size: 32px;
@@ -69,29 +73,6 @@
 
 #add-student-form table input[type="text"]:focus{
     border: 2px solid var(--accent10);
-}
-
-#add-student-form table select{
-    border-radius: 4px;
-    border: 1px solid var(--element-outline);
-    width: 150px;
-    height: 28px;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    outline: navy;
-}
-
-#add-student-form table select:hover{
-    box-shadow: 0 4px 20px var(--accent7);
-}
-
-#add-student-form table select:focus{
-    color: var(--accent10);
-    border: 2px solid var(--accent10);
-}
-
-#add-student-form table select option{
-    color: black;
 }
 
 #add-student-form table .form-submit{

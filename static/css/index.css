@@ -11,6 +11,8 @@
     --accent1: rgba(0, 138, 255, 0.1);
 
     --element-outline: rgba(0,0,0,0.2);
+    
+    --smooth-green: #0aa607;
 }
 
 *{
@@ -77,3 +79,53 @@ header{
     font-size: 16px;
 }
 
+.ib{
+    display: inline-block;
+}
+
+button.theme{
+    border-radius: 4px;
+    border: 1px solid var(--element-outline);
+    padding: 0 20px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    outline: navy;
+    transition: 150ms;
+    font-size: 16px;
+}
+
+button.theme:hover{
+    box-shadow: 0 4px 20px var(--accent7);
+}
+
+button.theme:focus{
+    color: var(--accent10);
+    border: 2px solid var(--accent10);
+}
+
+select.theme{
+    border-radius: 4px;
+    border: 1px solid var(--element-outline);
+    width: 150px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    outline: navy;
+    transition: 150ms;
+    font-size: 16px;
+}
+
+select.theme:hover{
+    box-shadow: 0 4px 20px var(--accent7);
+}
+
+select.theme:focus{
+    color: var(--accent10);
+    border: 2px solid var(--accent10);
+}
+
+select.theme option{
+    color: black;
+    font-size: 16px;
+}

@@ -28,6 +28,7 @@ class Collection():
     Table/Collection Class. 
     Used to create Collection Objects; Apply CRUD operations on the Collection.
     Arguments : Collection Name (String)
+    Collection Name : Class name (Ex: "12_a","12_b")
     '''
     
     def __init__(self,collectionName) -> None:
@@ -48,7 +49,10 @@ class Collection():
             raise RuntimeError(e)
     
     def get(self,date : str) :
-        '''Retrieve one day attendance'''
+        '''Retrieve one day attendance
+        Argument : Date (string)
+        date : "01-01-2000"
+        '''
         try:
             if type(date) is str :
                 obj = self._collection.find_one({"date":date})
