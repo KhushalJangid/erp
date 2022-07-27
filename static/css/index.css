@@ -11,6 +11,8 @@
     --accent1: rgba(0, 138, 255, 0.1);
 
     --element-outline: rgba(0,0,0,0.2);
+    
+    --smooth-green: #0aa607;
 }
 
 *{
@@ -34,7 +36,7 @@ html, body{
 }
 
 body{
-    background: url("../assets/wave_bg.svg");
+    background: url("wave_bg.svg");
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-position: right;
@@ -77,3 +79,72 @@ header{
     font-size: 16px;
 }
 
+.ib{
+    display: inline-block;
+}
+
+button.theme, select.theme{
+    border-radius: 4px;
+    border: 1px solid var(--element-outline);
+    padding: 0 20px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    outline: none;
+    transition: 150ms;
+    font-size: 16px;
+}
+
+select.theme{
+    padding: unset;
+    min-width: 150px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+button.theme:hover, select.theme:hover{
+    box-shadow: 0 2px 8px var(--accent4);
+}
+
+button.theme:focus, select.theme:focus{
+    color: var(--accent10);
+    border: 2px solid var(--accent10);
+}
+
+button.accent-theme{
+    border-radius: 4px;
+    border: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 0 20px;
+    height: 28px;
+    background: var(--accent10);
+    color: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    outline: navy;
+    transition: 150ms;
+    font-size: 16px;
+}
+
+button.accent-theme:hover{
+    box-shadow: 0 2px 8px var(--accent4);
+}
+
+button.accent-theme:focus{
+    border: 2px solid white;
+}
+
+select.theme option{
+    color: black;
+    font-size: 16px;
+}
+
+span.green{
+    color: var(--smooth-green);
+}
+
+span.red{
+    color: #ff0000;
+}
+
+span.dark-grey{
+    color: #606060;
+}
