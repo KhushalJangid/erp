@@ -63,13 +63,60 @@
         <h2 class="section-title">Classes</h2>
         <form class="ib">
             <!--'ib' stands for inline-block-->
-            <input type="date" />
-            <select>
+            <button class="theme" type="button">Today</button>
+            <select class="theme">
                 <option value="marked">Marked</option>
                 <option value="unmarked">Unmarked</option>
                 <option value="all">All</option>
             </select>
         </form>
+        <table id="classes-viewer" width="100%" cellspacing="0">
+            {%for key,values in data.items%}
+            {% if values.status %}
+            <tr>
+                <td class="class-details">
+                    <span class="class-name">Class<span class="class-identifier">{{values.class}}
+                            {{values.section}}</span></span>
+                    <span class="no-of-students">Total Students:<span
+                            class="student-count">{{values.total}}</span></span>
+                </td>
+                <td class="absent-details">
+                    <span class="absent-text">Absent</span>
+                    <span class="absent-count">{{values.absent}}</span>
+                </td>
+                <td class="present-details">
+                    <span class="present-text">Present</span>
+                    <span class="present-count">{{values.present}}</span>
+                </td>
+                <td class="attendance-trend">
+                    <div class="progress-container">
+                        <div class="progress-line"></div>
+                    </div>
+                    <span class="progress-percentage"><span class="percentage-count">92</span>%</span>
+                </td>
+                <td class="actions">
+                    <button class="accent-theme user-interactive">View</button>
+                    <button class="accent-theme user-interactive">Edit</button>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td class="class-details">
+                    <span class="class-name">Class<span class="class-identifier">{{values.class}}
+                            {{values.section}}</span></span>
+                    <span class="no-of-students">Total Students:<span
+                            class="student-count">{{values.total}}</span></span>
+                </td>
+                <td class="unmarked-msg" colspan="3">
+                    Attendance for this day is not marked yet.
+                </td>
+                <td class="actions">
+                    <button class="accent-theme user-interactive">Mark Attendance</button>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
     </section>
 </main>
 {% endblock body %}

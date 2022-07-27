@@ -3,8 +3,11 @@ from django.shortcuts import render
 from datetime import datetime
 from django.views import View
 from .models import Collection
+from Accounts.models import Faculty, User
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from json import dumps,loads
+from Accounts import serializers
 # Create your views here.
 
 def parseGet(request,kw):
@@ -20,13 +23,46 @@ def home(request):
     if request.user.post == "ad":
         pass
     elif request.user.post == "fc":
-        return render(request,"attendance/attendance_teacher.html")
+        context = {}
+        dic = {}
+        user = request.user
+        data = Faculty.objects.get(user=user)
+        meta = data.classes
+        data = loads(meta)
+        for _class in data:
+            table = Collection(_class)
+            obj = table.get(date=datetime.now().strftime("%d-%m-%Y"))
+            status = True if obj else False
+            if status :
+                att = obj["attendance"]
+                att = list(att.values())
+                total = len(att)
+                present = att.count(1)
+                absent = total - present
+                c = _class.split("_")
+                dic[_class] = {"status":status,
+                               "class" : c[0],
+                               "section": c[-1].upper(),
+                                "total": total,
+                                "present": present,
+                                "absent": absent,
+                                }
+            else :
+                c = _class.split("_")
+                st = serializers.get_student_list(_class=int(c[0]),section=c[-1].upper()).keys()
+                dic[_class] = {"status":status,
+                               "class" : c[0],
+                               "section": c[-1].upper(),
+                               "total":len(list(st))
+                               }
+        context["data"] = dic
+        return render(request,"attendance/attendance_teacher.html",context=context)
     else:
         pass
     return render(request,"login.html")
 
 # @method_decorator(login_required,name='get')
-class Faculty(View):
+class FacultyView(View):
     '''CBV for Searching/Adding/Editing attendance by faculty'''
     def get(self,request,**kwargs):
         if request.user.is_staff:
