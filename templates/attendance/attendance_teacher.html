@@ -86,12 +86,26 @@
                     </div>
                     <span class="progress-percentage"><span class="percentage-count">92</span>%</span>
                 </td>
-                <td>
-                    <button>View</button>
-                    <button>Edit</button>
+                <td class="actions">
+                    <button class="accent-theme user-interactive">View</button>
+                    <button class="accent-theme user-interactive">Edit</button>
                 </td>
             </tr>
             {% else %}
+            <tr>
+                <td class="class-details">
+                    <span class="class-name">Class<span class="class-identifier">{{values.class}}
+                            {{values.section}}</span></span>
+                    <span class="no-of-students">Total Students:<span
+                            class="student-count">{{values.total}}</span></span>
+                </td>
+                <td class="unmarked-msg" colspan="3">
+                    Attendance for this day is not marked yet.
+                </td>
+                <td class="actions">
+                    <button class="accent-theme user-interactive">Mark Attendance</button>
+                </td>
+            </tr>
             {% endif %}
             {% endfor %}
         </table>

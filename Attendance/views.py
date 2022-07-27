@@ -7,7 +7,7 @@ from Accounts.models import Faculty, User
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from json import dumps,loads
-from Accounts.tests import setr
+from Accounts import serializers
 # Create your views here.
 
 def parseGet(request,kw):
@@ -49,9 +49,11 @@ def home(request):
                                 }
             else :
                 c = _class.split("_")
+                st = serializers.get_student_list(_class=int(c[0]),section=c[-1].upper()).keys()
                 dic[_class] = {"status":status,
                                "class" : c[0],
                                "section": c[-1].upper(),
+                               "total":len(list(st))
                                }
         context["data"] = dic
         return render(request,"attendance/attendance_teacher.html",context=context)

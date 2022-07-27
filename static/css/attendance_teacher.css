@@ -37,6 +37,10 @@ section.notification button.dismiss{
     border-radius: 8px;
     border: 1px solid var(--element-outline);
     overflow: hidden;
+    margin: 16px 0;
+}
+#classes-viewer tr:nth-child(2n){
+    background-color: rgb(220, 220, 220);
 }
 #classes-viewer tr:nth-child(2n+1){
     background-color: white;
@@ -46,6 +50,7 @@ section.notification button.dismiss{
 }
 #classes-viewer td.class-details{
     padding: 20px 10px 20px 20px;
+    width: 200px;
 }
 #classes-viewer span.class-name{
     color: var(--accent10);
@@ -67,6 +72,7 @@ section.notification button.dismiss{
 }
 #classes-viewer td.absent-details, #classes-viewer td.present-details{
     text-align: right;
+    width: 120px;
 }
 #classes-viewer span.absent-text, #classes-viewer span.present-text{
     font-weight: bold;
@@ -84,5 +90,42 @@ section.notification button.dismiss{
     color: var(--smooth-green);
 }
 #classes-viewer td.attendance-trend{
-    
+    padding-left: 40px;
+    padding-right: 40px;
+    min-width: 200px;
+    text-align: right;
+}
+#classes-viewer div.progress-container{
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    position: relative;
+    background-color: var(--accent4);
+    margin-bottom: 6px;
+}
+#classes-viewer div.progress-container div.progress-line{
+    transition: 300ms;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 2px;
+    background-color: var(--accent10);
+    width: 92%;
+}
+#classes-viewer span.progress-percentage, #classes-viewer span.percentage-count{
+    font-size: 16px;
+    color: var(--accent10);
+}
+#classes-viewer td.actions{
+    text-align: center;
+}
+#classes-viewer td.actions button{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#classes-viewer td.unmarked-msg{
+    text-align: center;
+    font-size: 16px;
+    color: rgba(255, 0, 0, 0.5);
 }
