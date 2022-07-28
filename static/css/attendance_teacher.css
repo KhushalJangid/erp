@@ -175,22 +175,29 @@ section.notification button.dismiss{
 #edit-class-attendance input.remarks-input:focus{
     border: 2px solid var(--accent10);
 }
-#edit-class-attendance button.attendance-toggle{
-    font-size: 16px;
-    width: 100px;
+#edit-class-attendance button.attendance-marker{
+    background-color: white;
+    width: 50px;
     height: 28px;
-    border: none;
+    border: 1px solid var(--element-outline);
     border-radius: 4px;
+    transition: 150ms;
 }
-#edit-class-attendance button.attendance-toggle.unmarked{
-    background-color: var(--accent2);
-    color: var(--accent10);
+#edit-class-attendance button.attendance-marker img{
+    height: 24px;
 }
-#edit-class-attendance button.attendance-toggle.present{
-    background-color: rgba(10, 166, 7, 0.2);
-    color: var(--smooth-green);
+#edit-class-attendance button.attendance-marker.absent-btn.checked{
+    background: rgba(255, 0, 0, 0.1);
 }
-#edit-class-attendance button.attendance-toggle.absent{
-    background-color: rgba(255, 0, 0, 0.2);
-    color: #ff0000;
+#edit-class-attendance button.attendance-marker.present-btn.checked{
+    background: rgba(10, 166, 7, 0.1);
+}
+#edit-class-attendance button.attendance-marker.present-btn:focus, #edit-class-attendance button.attendance-marker.absent-btn:focus{
+    border: 2px solid var(--element-outline);
+}
+#edit-class-attendance button.attendance-marker.present-btn.checked:focus{
+    border: 2px solid rgb(10, 166, 7);
+}
+#edit-class-attendance button.attendance-marker.absent-btn.checked:focus{
+    border: 2px solid #ff0000;
 }
