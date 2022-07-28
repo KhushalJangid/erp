@@ -58,38 +58,55 @@ def home(request):
         context["data"] = dic
         return render(request,"attendance/attendance_teacher.html",context=context)
     else:
+        '''handle student attendance view here 
+        (filter by date through post request)'''
+        if request.method == "POST":
+            pass
         pass
-    return render(request,"login.html")
+
+@login_required()
+def view(request,_class,section):
+    return render(request,"attendance/view_attendance_teacher.html")
+
+@login_required()
+def mark(request,_class,section):
+    return render(request,"attendance/mark_attendance_teacher.html")
+
+@login_required()
+def edit(request,_class,section):
+    return render(request,"attendance/edit_attendance_teacher.html")
 
 # @method_decorator(login_required,name='get')
 class FacultyView(View):
     '''CBV for Searching/Adding/Editing attendance by faculty'''
     def get(self,request,**kwargs):
         if request.user.is_staff:
-            _class = kwargs["class"]
-            section = kwargs["section"]
-            table = Collection(f"{_class}_{section}")
-            _date = parseGet(self.request,"date")
-            if _date == "":
-                _from = parseGet(self.request,"from")
-                if _from == "":
-                    obj = table.get(date=datetime.now().strftime("%d-%m-%Y"))
-                    data = obj["attendace"]
-                    return HttpResponse(data)
-                _to = parseGet(self.request,"to")
-                obj = table.filter(_from,_to)
-                print(obj)
-                return
-            else :
-                obj = table.get(date=_date)
-                print(obj)
-                return
+            return render(request,"attendance/edit_attendance_teacher.html")
+            # _class = kwargs["class"]
+            # section = kwargs["section"]
+            # table = Collection(f"{_class}_{section}")
+            # _date = parseGet(self.request,"date")
+            # if _date == "":
+            #     _from = parseGet(self.request,"from")
+            #     if _from == "":
+            #         obj = table.get(date=datetime.now().strftime("%d-%m-%Y"))
+            #         data = obj["attendace"]
+            #         return HttpResponse(data)
+            #     _to = parseGet(self.request,"to")
+            #     obj = table.filter(_from,_to)
+            #     print(obj)
+            #     return
+            # else :
+            #     obj = table.get(date=_date)
+            #     print(obj)
+            #     return
         return HttpResponse(content="You are not authorized !",status=403)
     
     def post(self,request,**kwargs):
         if request.user.is_staff:
-            _class = kwargs["class"]
-            section = kwargs["section"]
+            return render(request,"attendance/edit_atendance.html")
+            # _class = kwargs["class"]
+            # section = kwargs["section"]
         return HttpResponse(content="You are not authorized !",status=403)
 class Admin(View):
     '''CBV for Searching/Adding/Editing attendance by site admin'''
