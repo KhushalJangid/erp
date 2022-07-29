@@ -15,6 +15,17 @@
     --smooth-green: #0aa607;
 }
 
+/*Colors using filter*/
+.filter-green{
+    filter: invert(40%) sepia(72%) saturate(1130%) hue-rotate(84deg) brightness(96%) contrast(101%);
+}
+.filter-red{
+    filter: invert(24%) sepia(80%) saturate(7265%) hue-rotate(357deg) brightness(91%) contrast(123%);
+}
+.filter-blue{
+    filter: invert(52%) sepia(62%) saturate(7489%) hue-rotate(194deg) brightness(108%) contrast(102%);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -83,16 +94,53 @@ header{
     display: inline-block;
 }
 
-button.theme{
+button.theme, select.theme{
     border-radius: 4px;
     border: 1px solid var(--element-outline);
     padding: 0 20px;
     height: 28px;
     background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    outline: none;
+    transition: 150ms;
+    font-size: 16px;
+}
+
+select.theme{
+    padding: unset;
+    min-width: 150px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+button.theme:hover, select.theme:hover{
+    box-shadow: 0 2px 8px var(--accent4);
+}
+
+button.theme:focus, select.theme:focus{
+    color: var(--accent10);
+    border: 2px solid var(--accent10);
+}
+
+button.accent-theme{
+    border-radius: 4px;
+    border: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 0 20px;
+    height: 28px;
+    background: var(--accent10);
+    color: white;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     outline: navy;
     transition: 150ms;
     font-size: 16px;
+}
+
+button.accent-theme:hover{
+    box-shadow: 0 2px 8px var(--accent4);
+}
+
+button.accent-theme:focus{
+    border: 2px solid white;
 }
 
 button.theme:hover{
@@ -128,4 +176,16 @@ select.theme:focus{
 select.theme option{
     color: black;
     font-size: 16px;
+}
+
+span.green{
+    color: var(--smooth-green);
+}
+
+span.red{
+    color: #ff0000;
+}
+
+span.dark-grey{
+    color: #606060;
 }
