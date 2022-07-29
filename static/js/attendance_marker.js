@@ -3,6 +3,7 @@ function manageCheck(evt){
     let buttonType = "";
     let otherButtons = [];
     let presentBtn, absentBtn;
+    let statusInput; // input tag to store status (Absent/Present/Unchecked)
 
     //Selecting the parent cell:
     for(let i = 0; i < 10; i++){
@@ -34,6 +35,11 @@ function manageCheck(evt){
                     absentBtn = target.childNodes[i];
                 }
             }
+            if(target.childNodes[i].tagName == "INPUT"){
+                if(target.childNodes[i].classList.contains("hidden_input")){
+                    statusInput = target.childNodes[i];
+                }
+            }
         }
     }else{
         return;
@@ -43,9 +49,11 @@ function manageCheck(evt){
     if(buttonType == "present"){
         if(presentBtn.classList.contains("checked")){
             presentBtn.classList.remove("checked");
+            statusInput.value = "Unmarked";
         }else{
             presentBtn.classList.add("checked");
             absentBtn.classList.remove("checked");
+            statusInput.value = "Present";
         }
     }
 
@@ -53,9 +61,11 @@ function manageCheck(evt){
     if(buttonType == "absent"){
         if(absentBtn.classList.contains("checked")){
             absentBtn.classList.remove("checked");
+            statusInput.value = "Unmarked";
         }else{
             absentBtn.classList.add("checked");
             presentBtn.classList.remove("checked");
+            statusInput.value = "Absent";
         }
     }
 

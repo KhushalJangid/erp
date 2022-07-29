@@ -1,13 +1,15 @@
+from re import A
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from datetime import datetime
 from django.views import View
-from .models import Collection
-from Accounts.models import Faculty, User
+from .models import AttendanceCollection,ClassesCollection
+from Accounts.models import Faculty, Student, User
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from json import dumps,loads
 from Accounts import serializers
+from django.contrib import messages
 # Create your views here.
 
 def parseGet(request,kw):
@@ -30,29 +32,32 @@ def home(request):
         meta = data.classes
         data = loads(meta)
         for _class in data:
-            table = Collection(_class)
+            table = AttendanceCollection(_class)
             obj = table.get(date=datetime.now().strftime("%d-%m-%Y"))
             status = True if obj else False
             if status :
                 att = obj["attendance"]
-                att = list(att.values())
+                # att = att.values()
                 total = len(att)
-                present = att.count(1)
+                present = 0
+                for value in att.values():
+                    if value["status"] == "Present":
+                        present+=1
                 absent = total - present
                 c = _class.split("_")
                 dic[_class] = {"status":status,
                                "class" : c[0],
-                               "section": c[-1].upper(),
+                               "section": c[-1],
                                 "total": total,
                                 "present": present,
                                 "absent": absent,
                                 }
             else :
                 c = _class.split("_")
-                st = serializers.get_student_list(_class=int(c[0]),section=c[-1].upper()).keys()
+                st = serializers.get_student_list(_class=int(c[0]),section=c[-1]).keys()
                 dic[_class] = {"status":status,
                                "class" : c[0],
-                               "section": c[-1].upper(),
+                               "section": c[-1],
                                "total":len(list(st))
                                }
         context["data"] = dic
@@ -66,49 +71,118 @@ def home(request):
 
 @login_required()
 def view(request,_class,section):
-    return render(request,"attendance/view_attendance_teacher.html")
+    if request.user.is_staff:
+        if request.method == "GET":
+            data = {}
+            std = ClassesCollection(f"{_class}_{section}").get()
+            table = AttendanceCollection(f"{_class}_{section}")
+            obj = table.get(date=datetime.now().strftime("%d-%m-%Y"))
+            att = obj["attendance"]
+            students = std["students"]
+            idx = 1
+            for key, value in students.items():
+                data[idx] = {
+                    'uid':key,
+                    'name':value,
+                    'status':att[key]['status'],
+                    'remarks':att[key]['remarks'],
+                }
+                idx+=1
+            context = {
+                "class":_class,
+                "section":section,
+                "data":data
+                }
+            return render(request,"attendance/view_attendance_teacher.html",context)
+
+        
+    return HttpResponse(content="You are not authorized !",status=403)
 
 @login_required()
 def mark(request,_class,section):
-    return render(request,"attendance/mark_attendance_teacher.html")
-
+    if request.user.is_staff:
+        if request.method == "GET":
+            data = {}
+            obj = ClassesCollection(f"{_class}_{section}").get()
+            students = obj["students"]
+            idx = 1
+            for key, value in students.items():
+                data[idx] = {
+                    'uid':key,
+                    'name':value
+                }
+                idx+=1
+            context = {
+                "class":_class,
+                "section":section,
+                "data":data
+                }
+            return render(request,"attendance/mark_attendance_teacher.html",context)
+        elif request.method == "POST":
+            data = {}
+            obj = ClassesCollection(f"{_class}_{section}").get()
+            students = obj["students"]
+            for key, value in students.items():
+                status = request.POST.get(f'{key}_status')
+                remarks = request.POST.get(f'{key}_remarks')
+                data[key] = {
+                    'status':status,
+                    'remarks':remarks,
+                }
+            ctx = {
+                "date" : datetime.now().strftime("%d-%m-%Y"),
+                "attendance":data,
+            }
+            table = AttendanceCollection(f"{_class}_{section}")
+            table.insert(ctx)
+            messages.info(request,f"Attendance for class {_class} {section} is saved !")
+            return redirect("/attendance")
+        else :
+            return HttpResponse(content="Only GET & POST requests are allowed.",status=403)
+    return HttpResponse(content="You are not authorized !",status=403)
+    
 @login_required()
 def edit(request,_class,section):
+    if request.user.is_staff:
+        if request.method == "GET":
+            data = {}
+            std = ClassesCollection(f"{_class}_{section}").get()
+            table = AttendanceCollection(f"{_class}_{section}")
+            obj = table.get(date=datetime.now().strftime("%d-%m-%Y"))
+            att = obj["attendance"]
+            students = std["students"]
+            idx = 1
+            for key, value in students.items():
+                data[idx] = {
+                    'uid':key,
+                    'name':value,
+                    'status':att[key]['status'],
+                    'remarks':att[key]['remarks'],
+                }
+                idx+=1
+            context = {
+                "class":_class,
+                "section":section,
+                "data":data
+                }
+            return render(request,"attendance/edit_attendance_teacher.html",context)
+        elif request.method == "POST":
+            data = {}
+            obj = ClassesCollection(f"{_class}_{section}").get()
+            students = obj["students"]
+            for key, value in students.items():
+                status = request.POST.get(f'{key}_status')
+                remarks = request.POST.get(f'{key}_remarks')
+                data[key] = {
+                    'status':status,
+                    'remarks':remarks,
+                }
+            table = AttendanceCollection(f"{_class}_{section}")
+            # table.insert(ctx)
+            table.update(date=datetime.now().strftime("%d-%m-%Y"),attendance=data)
+            messages.info(request,f"Attendance for class {_class} {section} is saved !")
+            return redirect("/attendance")
+        else :
+            return HttpResponse(content="Only GET & POST requests are allowed.",status=403)
+    return HttpResponse(content="You are not authorized !",status=403)
     return render(request,"attendance/edit_attendance_teacher.html")
-
-# @method_decorator(login_required,name='get')
-class FacultyView(View):
-    '''CBV for Searching/Adding/Editing attendance by faculty'''
-    def get(self,request,**kwargs):
-        if request.user.is_staff:
-            return render(request,"attendance/edit_attendance_teacher.html")
-            # _class = kwargs["class"]
-            # section = kwargs["section"]
-            # table = Collection(f"{_class}_{section}")
-            # _date = parseGet(self.request,"date")
-            # if _date == "":
-            #     _from = parseGet(self.request,"from")
-            #     if _from == "":
-            #         obj = table.get(date=datetime.now().strftime("%d-%m-%Y"))
-            #         data = obj["attendace"]
-            #         return HttpResponse(data)
-            #     _to = parseGet(self.request,"to")
-            #     obj = table.filter(_from,_to)
-            #     print(obj)
-            #     return
-            # else :
-            #     obj = table.get(date=_date)
-            #     print(obj)
-            #     return
-        return HttpResponse(content="You are not authorized !",status=403)
-    
-    def post(self,request,**kwargs):
-        if request.user.is_staff:
-            return render(request,"attendance/edit_atendance.html")
-            # _class = kwargs["class"]
-            # section = kwargs["section"]
-        return HttpResponse(content="You are not authorized !",status=403)
-class Admin(View):
-    '''CBV for Searching/Adding/Editing attendance by site admin'''
-    def get(self,request):
-        return

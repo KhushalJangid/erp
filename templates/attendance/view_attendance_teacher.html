@@ -38,111 +38,21 @@
                 </tr>
             </thead>
             <tbody>
+                {%for key,values in data.items%}
                 <tr>
-                    <td>1</td>
-                    <td>Aman Tripathi</td>
-                    <td>1B01</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
+                    <td>{{key}}</td>
+                    <td>{{values.name}}</td>
+                    <td>{{key}}</td>
+                    {% if values.status == 'Present'%}
+                    <td><span class="green">{{values.status}}</span></td>
+                    {% elif values.status == 'Absent'%}
+                    <td><span class="red">{{values.status}}</span></td>
+                    {% else %}
+                    <td><span class="dark-grey">{{values.status}}</span></td>
+                    {% endif %}
+                    <td>{{values.remarks}}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Bhavna Sharma</td>
-                    <td>1B02</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Bhavnesh Jangid</td>
-                    <td>1B03</td>
-                    <td><span class="dark-grey">Unmarked</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Disha Singh</td>
-                    <td>1B04</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Dushyant Verma</td>
-                    <td>1B05</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Gagan Mudgal</td>
-                    <td>1B06</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Gaurang Joshi</td>
-                    <td>1B07</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Harshika Malhotra</td>
-                    <td>1B08</td>
-                    <td><span class="red">Absent</span></td>
-                    <td><span class="dark-grey">High Fever</span></td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Ishika Jain</td>
-                    <td>1B09</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Jai Kumar Yadav</td>
-                    <td>1B10</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>Jayesh Choudhary</td>
-                    <td>1B11</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Kaushik Jain</td>
-                    <td>1B12</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td>Keerti Verma</td>
-                    <td>1B13</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td>Khushal Gupta</td>
-                    <td>1B14</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td>Kiran Jangid</td>
-                    <td>1B15</td>
-                    <td><span class="green">Present</span></td>
-                    <td></td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </section>

@@ -1,4 +1,3 @@
-=======
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
@@ -25,175 +24,58 @@
         </tr>
     </table>
     <section id="edit-class">
-        <button class="accent-theme">Tasks</button>
-        <button class="theme user-interactive" type="button">Download</button>
-        <button class="theme user-interactive" type="button">Print</button>
-        <button class="accent-theme user-interactive" id="submit-attn-btn">Submit</button>
-        <table id="edit-class-attendance" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>S. No.</th>
-                    <th>Name</th>
-                    <th>Roll No.</th>
-                    <th>Attendance</th>
-                    <th>Remarks</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Aman Tripathi</td>
-                    <td>1B01</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Bhavna Sharma</td>
-                    <td>1B02</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Bhavnesh Jangid</td>
-                    <td>1B03</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Disha Singh</td>
-                    <td>1B04</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Dushyant Verma</td>
-                    <td>1B05</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Gagan Mudgal</td>
-                    <td>1B06</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Gaurang Joshi</td>
-                    <td>1B07</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Harshika Malhotra</td>
-                    <td>1B08</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" value="High Fever"/></td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Ishika Jain</td>
-                    <td>1B09</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Jai Kumar Yadav</td>
-                    <td>1B10</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>Jayesh Choudhary</td>
-                    <td>1B11</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Kaushik Jain</td>
-                    <td>1B12</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td>Keerti Verma</td>
-                    <td>1B13</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td>Khushal Gupta</td>
-                    <td>1B14</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td>Kiran Jangid</td>
-                    <td>1B15</td>
-                    <td>
-                        <button class="attendance-marker present-btn user-interactive"><img src="{% static 'icons/btn-tick.svg' %}" class="filter-green"/></button>
-                        <button class="attendance-marker absent-btn user-interactive"><img src="{% static 'icons/btn-cross.svg' %}" class="filter-red"/></button>
-                    </td>
-                    <td><input class="remarks-input" type="text" placeholder="Enter your remarks here" /></td>
-                </tr>
-            </tbody>
-        </table>
+        <form method="post">
+            {% csrf_token %}
+            <button class="accent-theme" type="button">Tasks</button>
+            <button class="theme user-interactive" type="button">Download</button>
+            <button class="theme user-interactive" type="button">Print</button>
+            <button class="accent-theme user-interactive" id="submit-attn-btn">Submit</button>
+            <table id="edit-class-attendance" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>S. No.</th>
+                        <th>Name</th>
+                        <th>Roll No.</th>
+                        <th>Attendance</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for key,values in data.items%}
+                    <tr>
+                        <td>{{key}}</td>
+                        <td>{{values.name}}</td>
+                        <td>{{key}}</td>
+                        <td>
+                            <input class="hidden_input" name="{{values.uid}}_status" value="{{values.status}}"
+                                type="hidden">
+                            {% if values.status == 'Present'%}
+                            <button class="attendance-marker present-btn user-interactive checked" type="button"><img
+                                    src="{% static 'icons/btn-tick.svg' %}" class="filter-green" /></button>
+                            <button class="attendance-marker absent-btn user-interactive" type="button"><img
+                                    src="{% static 'icons/btn-cross.svg' %}" class="filter-red" /></button>
+                            {% elif values.status == 'Absent'%}
+                            <button class="attendance-marker present-btn user-interactive" type="button"><img
+                                    src="{% static 'icons/btn-tick.svg' %}" class="filter-green" /></button>
+                            <button class="attendance-marker absent-btn user-interactive checked" type="button"><img
+                                    src="{% static 'icons/btn-cross.svg' %}" class="filter-red" /></button>
+                            {% else %}
+                            <button class="attendance-marker present-btn user-interactive" type="button"><img
+                                    src="{% static 'icons/btn-tick.svg' %}" class="filter-green" /></button>
+                            <button class="attendance-marker absent-btn user-interactive" type="button"><img
+                                    src="{% static 'icons/btn-cross.svg' %}" class="filter-red" /></button>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <input class="remarks-input" name="{{values.uid}}_remarks" value="{{values.remarks}}"
+                                type="text" placeholder="Enter your remarks here" />
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
     </section>
 </main>
 <script src="{% static 'js/attendance_marker.js' %}"></script>
 {% endblock body %}
->>>>>>> 429631290dcb584ab8693aa374077179a814b3b1

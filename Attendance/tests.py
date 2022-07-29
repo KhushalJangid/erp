@@ -1,6 +1,6 @@
 from django.test import TestCase
-from models import Collection
+from models import ClassesCollection
 # Create your tests here.
 
-table = Collection("478")
-print(table.get({"date":""}))
+obj = ClassesCollection("12_a")
+print(obj.get())

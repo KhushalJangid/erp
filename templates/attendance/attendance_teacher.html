@@ -19,10 +19,16 @@
             </td>
         </tr>
     </table>
-    <section class="notification red"><span>This is an example of a red message</span><button
+    <!--<section class="notification red"><span>This is an example of a red message</span><button
             class="dismiss user-interactive"><img src="{% static 'icons/cross.svg'%}" height="24px" /></button>
+    </section> -->
+    {% if messages %}
+    {%for message in messages%}
+    <section class="notification blue">
+        <span>{{message}}</span>
     </section>
-    <section class="notification blue"><span>This is an example of a blue message</span></section>
+    {% endfor %}
+    {% endif %}
     <section class="btn-grp-type1">
         <table>
             <tr>
@@ -95,8 +101,10 @@
                     <span class="progress-percentage"><span class="percentage-count">92</span>%</span>
                 </td>
                 <td class="actions">
-                    <button class="accent-theme user-interactive">View</button>
-                    <button class="accent-theme user-interactive">Edit</button>
+                    <button class="accent-theme user-interactive"
+                        onclick="window.location='/attendance/view/{{values.class}}/{{values.section}}'">View</button>
+                    <button class="accent-theme user-interactive"
+                        onclick="window.location='/attendance/edit/{{values.class}}/{{values.section}}'">Edit</button>
                 </td>
             </tr>
             {% else %}
@@ -111,7 +119,9 @@
                     Attendance for this day is not marked yet.
                 </td>
                 <td class="actions">
-                    <button class="accent-theme user-interactive">Mark Attendance</button>
+                    <button class="accent-theme user-interactive"
+                        onclick="window.location='/attendance/mark/{{values.class}}/{{values.section}}'">Mark
+                        Attendance</button>
                 </td>
             </tr>
             {% endif %}

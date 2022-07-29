@@ -188,9 +188,11 @@ section.notification button.dismiss{
 }
 #edit-class-attendance button.attendance-marker.absent-btn.checked{
     background: rgba(255, 0, 0, 0.1);
+    border: 2px solid #ff0000;
 }
 #edit-class-attendance button.attendance-marker.present-btn.checked{
     background: rgba(10, 166, 7, 0.1);
+    border: 2px solid rgb(10, 166, 7);
 }
 #edit-class-attendance button.attendance-marker.present-btn:focus, #edit-class-attendance button.attendance-marker.absent-btn:focus{
     border: 2px solid var(--element-outline);
