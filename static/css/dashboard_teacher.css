@@ -11,11 +11,127 @@ body{
     bottom: 15px;
     background-color: rgba(255, 255, 255, 0.5);
     border-top: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    border-bottom: 1px solid var(--element-outline);
     box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    backdrop-filter: blur(20px);
+    transition: 150ms;
+}
+#sidebar *{
+    transition: 150ms;
 }
 #sidebar.expanded{
-    min-width: 250px;
+    width: 250px;
     border-radius: 8px;
+}
+#sidebar-container{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    padding-top: 44px;
+}
+#sidebar-toggle{
+    position: absolute;
+    height: 24px;
+    width: 40px;
+    right: 0;
+    top: 10px;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    transition: 150ms;
+}
+#sidebar-toggle img{
+    height: 20px;
+}
+#sidebar-search{
+    position: relative;
+    height: 28px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+#sidebar-search-input{
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--element-outline);
+    border-radius: 4px;
+    height: 28px;
+    padding-left: 10px;
+    font-size: 16px;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+#sidebar-search-btn{
+    position: absolute;
+    right: 12px;
+    height: 28px;
+    border: none;
+    background: none;
+    transition: 150ms;
+}
+#sidebar-search-btn img{
+    height: 14px;
+}
+#sidebar-items, #special-sidebar-items{
+    list-style-type: none;
+}
+#sidebar-items li.sidebar-item, #special-sidebar-items li.sidebar-item{
+    padding: 2px;
+    height: 28px;
+    width: 100%;
+    border-radius: 4px;
+    margin: 5px 0;
+}
+#sidebar-items li.sidebar-item:hover, #special-sidebar-items li.sidebar-item:hover{
+    background: var(--accent2);
+    color: var(--accent10);
+}
+#sidebar-items li.sidebar-item.selected, #special-sidebar-items li.sidebar-item.selected{
+    background: var(--accent9);
+    color: white;
+}
+#sidebar-items li.sidebar-item i.fa, #special-sidebar-items li.sidebar-item i.fa{
+    margin: 0 8px;
+}
+#sidebar-items li.sidebar-item span.item-name #special-sidebar-items li.sidebar-item span.item-name{
+    line-height: 24px;
+    font-size: 17px;
+    opacity: 1;
+}
+#special-sidebar-items{
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+}
+#sidebar.collapsed{
+    width: 60px;
+    overflow: hidden;
+}
+#sidebar.collapsed #sidebar-toggle{
+    right: 10px;
+    transform: rotateZ(180deg);
+}
+#sidebar.collapsed #sidebar-search{
+    opacity: 0;
+    height: 0;
+}
+#sidebar.collapsed #sidebar-items li.sidebar-item span.item-name, 
+#sidebar.collapsed #special-sidebar-items li.sidebar-item span.item-name{
+    display: none;
+}
+#sidebar.collapsed #sidebar-items li.sidebar-item,
+#sidebar.collapsed #special-sidebar-items li.sidebar-item{
+    padding: 0;
+    height: 40px;
+    text-align: center;
+}
+#sidebar.collapsed #sidebar-items li.sidebar-item i.fa,
+#sidebar.collapsed #special-sidebar-items li.sidebar-item i.fa{
+    margin: auto;
+    line-height: 40px;
+    font-size: 24px;
 }
 #workspace{
     position: fixed;
@@ -27,11 +143,16 @@ body{
     backdrop-filter: blur(20px);
     padding: 15px 40px;
     border-top: 1px solid rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid var(--element-outline);
     box-shadow: 0 2px 20px rgba(0,0,0,0.1);
     overflow-y: auto;
+    transition: 150ms;
 }
 #workspace.collapsed{
     left: 280px;
+}
+#workspace.expanded{
+    left: 90px;
 }
 #workspace table.title-holder td{
     vertical-align: middle;
@@ -46,6 +167,35 @@ body{
 #workspace-title{
     font-size: 40px;
     margin: 20px 0;
+}
+#grid-wrapper{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+#grid-wrapper div.tile{
+    padding: 20px;
+    border-radius: 8px;
+    background: rgb(255, 255, 255, 0.7);
+    border-top: 1px solid white;
+}
+#profile-tile{
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+#profile-img-holder{
+    height: 150px;
+    width: 150px;
+    border-radius: 75px;
+    padding: 2px;
+    border: 5px solid var(--accent10);
+    vertical-align: top;
+}
+#profile-img-holder img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
 }
 section.btn-grp-type1{
     overflow-x: auto;

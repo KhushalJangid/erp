@@ -25,6 +25,10 @@
 .filter-blue{
     filter: invert(52%) sepia(62%) saturate(7489%) hue-rotate(194deg) brightness(108%) contrast(102%);
 }
+.filter-white{
+    filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(62deg) brightness(108%) contrast(101%);
+}
+
 
 *{
     margin: 0;
