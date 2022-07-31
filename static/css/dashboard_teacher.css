@@ -185,14 +185,21 @@ body{
     background: rgb(255, 255, 255, 0.7);
     border-top: 1px solid white;
 }
+#grid-wrapper div.tile h2{
+    font-size: 30px;
+}
 #profile-tile{
+    padding: 20px;
     grid-column-start: 1;
     grid-column-end: 4;
+    display: grid;
+    grid-template-columns: 250px auto;
+    margin-bottom: 20px;
 }
 #profile-img-holder{
-    height: 150px;
-    width: 150px;
-    border-radius: 75px;
+    height: 160px;
+    width: 160px;
+    border-radius: 80px;
     padding: 2px;
     border: 5px solid var(--accent10);
     vertical-align: top;
@@ -202,6 +209,35 @@ body{
     width: 100%;
     border-radius: 50%;
 }
+#profile-txt-holder h1{
+    font-size: 36px;
+}
+#profile-txt-holder span.teacher-name{
+    font-size: 44px;
+}
+#profile-txt-holder table{
+    margin-top: 10px;
+}
+#profile-txt-holder table td{
+    color: rgb(80, 80, 80);
+    padding: 5px;
+    vertical-align: center;
+}
+#profile-txt-holder table td span.role,
+#profile-txt-holder table td span.class,
+#profile-txt-holder table td span.subject{
+    height: 28px;
+    background-color: var(--accent10);
+    color: white;
+    padding: 3px 15px;
+    border-radius: 14px;
+    margin: 0 5px 0 0;
+}
+#attendance-tile{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
 section.btn-grp-type1{
     overflow-x: auto;
 }
