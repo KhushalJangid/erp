@@ -221,3 +221,24 @@ section.btn-grp-type1 button:focus{
 section h2.section-title{
     font-size: 30px;
 }
+#options-band td button img{
+    width: 60px;
+    opacity: 0.5;
+}
+#options-band td button img.btn-hovered{
+    opacity: 1;
+}
+#options-band td button table.btn-layout{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+#options-band td button table.btn-layout td.img-holder{
+    width: 60px;
+    vertical-align: middle;
+}
+#options-band td button table.btn-layout td.txt-holder{
+    font-size: 12px;
+    vertical-align: bottom;
+    height: 25px;
+}

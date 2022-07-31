@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../static/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/dashboard_teacher.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/attendance_teacher.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Attendance</title>
+</head>
+<body>
+    <header>
+        <img src="../../static/assets/logo.svg" class="logo-in-header">
+            
+        <nav id="header-tools">
+           <img src="../../static/icons/info-circle.svg" class="icon user-interactive">
+           <img src="../../static/icons/about-icon.svg" class="icon user-interactive">
+        </nav>
+    </header>
+    <aside id="sidebar" class="expanded">
+        <div id="sidebar-container">
+            <button id="sidebar-toggle" class="user-interactive"><img src="../../static/icons/back-arrow.svg"></button>
+            <section id="sidebar-search">
+                <input type="text" placeholder="Search" id="sidebar-search-input" />
+                <button id="sidebar-search-btn" class="user-interactive">
+                    <i class="fa fa-search"></i>
+                </button>
+            </section>
+            <section id="sidebar-items-container">
+                <ul id="sidebar-items">
+                    <li class="sidebar-item selected">
+                        <i class="fa fa-dashboard"></i><span class="item-name">Dashboard</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <i class="fa fa-bell"></i><span class="item-name">Notifications</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <i class="fa fa-check-square"></i><span class="item-name">Attendance</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <i class="fa fa-clock-o"></i><span class="item-name">Time Table</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <i class="fa fa-bullhorn"></i><span class="item-name">Announcements</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <i class="fa fa-money"></i><span class="item-name">Fee</span>
+                    </li>
+                </ul>
+                <ul id="special-sidebar-items">
+                    <li class="sidebar-item">
+                        <i class="fa fa-cog"></i><span class="item-name">Settings</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </aside>
+    <main id="workspace" class="collapsed">
+        <table class="title-holder">
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <h1 id="workspace-title">Attendance</h1>
+                </td>
+            </tr>
+        </table>
+        <section class="notification red"><span>This is an example of a red message</span><button class="dismiss user-interactive"><img src="icons/cross.svg" height="24px"/></button></section>
+        <section class="notification blue"><span>This is an example of a blue message</span></section>
+        <section class="btn-grp-type1">
+            <table id="options-band"><!--see dashboard_teacher.css-->
+                <tr>
+                    <td>
+                        <button class="user-interactive">
+                            <table class="btn-layout">
+                                <tr>
+                                    <td class="img-holder">
+                                        <img src="../../static/icons/view-trends-icon.svg" class="filter-blue"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="txt-holder">
+                                        View Trends
+                                    </td>
+                                </tr>
+                            </table>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="user-interactive">
+                            <table class="btn-layout">
+                                <tr>
+                                    <td class="img-holder">
+                                        <img src="../../static/icons/request-other-attendance-icon.svg" class="filter-blue"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="txt-holder">
+                                        Request Other Attendance
+                                    </td>
+                                </tr>
+                            </table>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="user-interactive">
+                            <table class="btn-layout">
+                                <tr>
+                                    <td class="img-holder">
+                                        <img src="../../static/icons/extra-class-icon.svg" class="filter-blue"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="txt-holder">
+                                        Extra Class
+                                    </td>
+                                </tr>
+                            </table>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="user-interactive">
+                            <table class="btn-layout">
+                                <tr>
+                                    <td class="img-holder">
+                                        <img src="../../static/icons/merge-classes-icon.svg" class="filter-blue"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="txt-holder">
+                                        Merge Classes
+                                    </td>
+                                </tr>
+                            </table>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="user-interactive">
+                            <table class="btn-layout">
+                                <tr>
+                                    <td class="img-holder">
+                                        <img src="../../static/icons/applications-icon.svg" class="filter-blue"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="txt-holder">
+                                        Applications
+                                    </td>
+                                </tr>
+                            </table>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="user-interactive">
+                            <table class="btn-layout">
+                                <tr>
+                                    <td class="img-holder">
+                                        <img src="../../static/icons/submit-attendance-icon.svg" class="filter-blue"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="txt-holder">
+                                        Submit Attendance
+                                    </td>
+                                </tr>
+                            </table>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </section>
+        <section id="classes">
+            <h2 class="section-title">Classes</h2>
+            <form class="ib"><!--'ib' stands for inline-block-->
+                <button class="theme" type="button">Today</button>
+                <select class="theme">
+                    <option value="marked">Marked</option>
+                    <option value="unmarked">Unmarked</option>
+                    <option value="all">All</option>
+                </select>
+            </form>
+            <table id="classes-viewer" width="100%" cellspacing="0">
+                <tr class="class-row">
+                    <td class="class-details">
+                        <span class="class-name">Class<span class="class-identifier">1A</span></span>
+                        <span class="no-of-students">Total Students:<span class="student-count">64</span></span>
+                    </td>
+                    <td class="absent-details">
+                        <span class="absent-text">Absent</span>
+                        <span class="absent-count">5</span>
+                    </td>
+                    <td class="present-details">
+                        <span class="present-text">Present</span>
+                        <span class="present-count">59</span>
+                    </td>
+                    <td class="attendance-trend">
+                        <div class="progress-container">
+                            <div class="progress-line"></div>
+                        </div>
+                        <span class="progress-percentage"><span class="percentage-count">92</span>%</span>
+                    </td>
+                    <td class="actions">
+                        <button class="accent-theme user-interactive">View</button>
+                        <button class="accent-theme user-interactive">Edit</button>
+                    </td>
+                </tr>
+
+
+
+
+
+                <tr class="class-row">
+                    <td class="class-details">
+                        <span class="class-name">Class<span class="class-identifier">1B</span></span>
+                        <span class="no-of-students">Total Students:<span class="student-count">56</span></span>
+                    </td>
+                    <td class="unmarked-msg" colspan="3">
+                        Attendance for this day is not marked yet.
+                    </td>
+                    <td class="actions">
+                        <button class="accent-theme user-interactive">Mark Attendance</button>
+                    </td>
+                </tr>
+
+
+
+
+
+
+                <tr class="class-row">
+                    <td class="class-details">
+                        <span class="class-name">Class<span class="class-identifier">1C</span></span>
+                        <span class="no-of-students">Total Students:<span class="student-count">80</span></span>
+                    </td>
+                    <td class="absent-details">
+                        <span class="absent-text">Absent</span>
+                        <span class="absent-count">8</span>
+                    </td>
+                    <td class="present-details">
+                        <span class="present-text">Present</span>
+                        <span class="present-count">72</span>
+                    </td>
+                    <td class="attendance-trend">
+                        <div class="progress-container">
+                            <div class="progress-line"></div>
+                        </div>
+                        <span class="progress-percentage"><span class="percentage-count">90</span>%</span>
+                    </td>
+                    <td class="actions">
+                        <button class="accent-theme user-interactive">View</button>
+                        <button class="accent-theme user-interactive">Edit</button>
+                    </td>
+                </tr>
+
+
+            </table>
+        </section>
+    </main>
+    <script src="../../static/js/sidebar_navigator.js"></script>
+    <script src="../../static/js/options_band_animation.js"></script>
+    <script src="../../static/js/attendance_progress_bar.js"></script>
+</body>
+</html>
