@@ -100,21 +100,27 @@ class ClassesCollection():
     Collection Name : Class name (Ex: "12_a","12_b")
     '''
     
-    def __init__(self,collectionName) -> None:
+    def __init__(self,className) -> None:
         self._db = _client["Classes"] # The database to use
-        self._collectionName = collectionName
+        self._collectionName = "classes"
         self._collection = self._db[self._collectionName]
+        self._className = className
         
-    def insert(self,data):
+    def addStudent(self,username,name):
         try:
-            if type(data) is dict:
-                if "date" in data.keys() and "attendance" in data.keys():
-                    obj = self._collection.insert_one(data)
-                    return obj
-                else :
-                    return ValueError("Invalid data")
-            else:
-                raise ValueError("Expected a Dictionary object")
+            if username and name:
+                print(self._className)
+                obj = self._collection.find_one({"_id":self._className})
+                stList =  obj["students"]
+                stList[username] = name
+                stList = {k: v for k, v in sorted(stList.items(), key=lambda item: item[1])}
+                obj = self._collection.update_one(
+                    {"_id":self._className},
+                    {"$set":{"students":stList}}
+                )
+                return obj
+            else :
+                return ValueError("Invalid data")
         except Exception as e:
             raise RuntimeError(e)
     
@@ -124,23 +130,8 @@ class ClassesCollection():
         date : "01-01-2000"
         '''
         try:
-            obj = self._collection.find_one()
+            obj = self._collection.find_one({"_id":self._className})
             return obj
         except Exception as e:
             raise RuntimeError(e)
         
-    def update(self,date:str,*args):
-        try:
-            if type(args) is dict:
-                obj = self._collection.find_one({"date":date})
-                data = obj["attendance"]
-                data.update(args)
-                obj["attendance"] = data
-                return self._collection.insert_one(obj)
-            else:
-                raise ValueError("Expected a Dictionary object")
-        except Exception as e:
-            raise RuntimeError(e)
-    
-    def delete(self):
-        pass

@@ -66,14 +66,15 @@
     {% endfor %}
     {% endif %}
     <section class="btn-grp-type1">
-        <table id="options-band"><!--see dashboard_teacher.css-->
+        <table id="options-band">
+            <!--see dashboard_teacher.css-->
             <tr>
                 <td>
                     <button class="user-interactive">
                         <table class="btn-layout">
                             <tr>
                                 <td class="img-holder">
-                                    <img src="../../static/icons/view-trends-icon.svg" class="filter-blue"/>
+                                    <img src="../../static/icons/view-trends-icon.svg" class="filter-blue" />
                                 </td>
                             </tr>
                             <tr>
@@ -89,7 +90,8 @@
                         <table class="btn-layout">
                             <tr>
                                 <td class="img-holder">
-                                    <img src="../../static/icons/request-other-attendance-icon.svg" class="filter-blue"/>
+                                    <img src="../../static/icons/request-other-attendance-icon.svg"
+                                        class="filter-blue" />
                                 </td>
                             </tr>
                             <tr>
@@ -105,7 +107,7 @@
                         <table class="btn-layout">
                             <tr>
                                 <td class="img-holder">
-                                    <img src="../../static/icons/extra-class-icon.svg" class="filter-blue"/>
+                                    <img src="../../static/icons/extra-class-icon.svg" class="filter-blue" />
                                 </td>
                             </tr>
                             <tr>
@@ -121,7 +123,7 @@
                         <table class="btn-layout">
                             <tr>
                                 <td class="img-holder">
-                                    <img src="../../static/icons/merge-classes-icon.svg" class="filter-blue"/>
+                                    <img src="../../static/icons/merge-classes-icon.svg" class="filter-blue" />
                                 </td>
                             </tr>
                             <tr>
@@ -137,7 +139,7 @@
                         <table class="btn-layout">
                             <tr>
                                 <td class="img-holder">
-                                    <img src="../../static/icons/applications-icon.svg" class="filter-blue"/>
+                                    <img src="../../static/icons/applications-icon.svg" class="filter-blue" />
                                 </td>
                             </tr>
                             <tr>
@@ -153,7 +155,7 @@
                         <table class="btn-layout">
                             <tr>
                                 <td class="img-holder">
-                                    <img src="../../static/icons/submit-attendance-icon.svg" class="filter-blue"/>
+                                    <img src="../../static/icons/submit-attendance-icon.svg" class="filter-blue" />
                                 </td>
                             </tr>
                             <tr>
@@ -171,12 +173,14 @@
         <h2 class="section-title">Classes</h2>
         <form class="ib">
             <!--'ib' stands for inline-block-->
-            <button class="theme" type="button">Today</button>
-            <select class="theme">
+            <!--<button class="theme" type="button">Today</button>-->
+            <input name="date" type="date" id="date-picker" style="padding: 0.2rem;font-size: 16px;">
+            <select name="type" class="theme">
                 <option value="marked">Marked</option>
                 <option value="unmarked">Unmarked</option>
-                <option value="all">All</option>
+                <option value="all" selected="true">All</option>
             </select>
+            <button class="accent-theme user-interactive" type="submit">Search</button>
         </form>
         <table id="classes-viewer" width="100%" cellspacing="0">
             {%for key,values in data.items%}
@@ -204,9 +208,9 @@
                 </td>
                 <td class="actions">
                     <button class="accent-theme user-interactive"
-                        onclick="window.location='/attendance/view/{{values.class}}/{{values.section}}'">View</button>
+                        onclick="window.location='/attendance/view/{{values.class}}/{{values.section}}?date={{values.date}}'">View</button>
                     <button class="accent-theme user-interactive"
-                        onclick="window.location='/attendance/edit/{{values.class}}/{{values.section}}'">Edit</button>
+                        onclick="window.location='/attendance/edit/{{values.class}}/{{values.section}}?date={{values.date}}'">Edit</button>
                 </td>
             </tr>
             {% else %}
@@ -222,7 +226,7 @@
                 </td>
                 <td class="actions">
                     <button class="accent-theme user-interactive"
-                        onclick="window.location='/attendance/mark/{{values.class}}/{{values.section}}'">Mark
+                        onclick="window.location='/attendance/mark/{{values.class}}/{{values.section}}?date={{values.date}}'">Mark
                         Attendance</button>
                 </td>
             </tr>
@@ -234,4 +238,14 @@
 <script src="../../static/js/sidebar_navigator.js"></script>
 <script src="../../static/js/options_band_animation.js"></script>
 <script src="../../static/js/attendance_progress_bar.js"></script>
+<script>
+    document.getElementById("date-picker").max = new Date().toISOString().split("T")[0];
+    params = new URLSearchParams(location.search);
+    const date = params.get("date");
+    if (date == null) {
+        document.getElementById("date-picker").value = new Date().toISOString().split("T")[0];
+    } else {
+        document.getElementById("date-picker").value = date;
+    }
+</script>
 {% endblock body %}

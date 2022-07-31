@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.contrib.auth import logout, login, authenticate
 from django.shortcuts import redirect, render
 from datetime import datetime
+from Attendance.models import ClassesCollection
+from .tests import setr
 from .models import Faculty, Student, User
 from django.contrib.auth.decorators import login_required
 
@@ -44,6 +46,7 @@ def add_student(request):
             name = name.split(" ")
             f_name = name[0]
             l_name = name[-1]
+            ClassesCollection(f"{_class}_{section}").addStudent(username=aadhar,name=f"{f_name} {l_name}")
             user = User.objects.create(username=aadhar,
                                     first_name=f_name,
                                     last_name=l_name,

@@ -64,6 +64,7 @@
     <section id="edit-class">
         <form method="post">
             {% csrf_token %}
+            <input type="date" name="date" value="{{date}}" hidden>
             <button class="accent-theme" type="button">Tasks</button>
             <button class="theme user-interactive" type="button">Download</button>
             <button class="theme user-interactive" type="button">Print</button>

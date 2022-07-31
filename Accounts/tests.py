@@ -1,11 +1,14 @@
 from django.test import TestCase
-from .models import Faculty,User
+from .models import Faculty,Student,User
+from Attendance.models import ClassesCollection
 from json import dumps
 # Create your tests here.
 
 def setr():
-    user = User.objects.get(username=484298)
-    obj = Faculty.objects.get(user = user)
-    obj.classes = dumps(["12_a"])
-    obj.save()
-    print(obj)
+    query = Student.objects.all()
+    for q in query:
+        f_name = q.user.first_name
+        l_name = q.user.last_name
+        username = q.user.username
+        ClassesCollection(f"12_A").addStudent(username=username,name=f"{f_name} {l_name}")
+    return
