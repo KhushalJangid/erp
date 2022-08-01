@@ -8,61 +8,17 @@
 {% endblock head %}
 {% block title %}Dashboard{% endblock title %}
 {% block body %}
-<header>
-    <img src="../../static/assets/logo.svg" class="logo-in-header">
-        
-    <nav id="header-tools">
-       <img src="../../static/icons/info-circle.svg" class="icon user-interactive">
-       <img src="../../static/icons/about-icon.svg" class="icon user-interactive">
-    </nav>
-</header>
-<aside id="sidebar" class="expanded">
-    <div id="sidebar-container">
-        <button id="sidebar-toggle" class="user-interactive"><img src="../../static/icons/back-arrow.svg"></button>
-        <section id="sidebar-search">
-            <input type="text" placeholder="Search" id="sidebar-search-input" />
-            <button id="sidebar-search-btn" class="user-interactive">
-                <i class="fa fa-search"></i>
-            </button>
-        </section>
-        <section id="sidebar-items-container">
-            <ul id="sidebar-items">
-                <li class="sidebar-item selected">
-                    <i class="fa fa-dashboard"></i><span class="item-name">Dashboard</span>
-                </li>
-                <li class="sidebar-item">
-                    <i class="fa fa-bell"></i><span class="item-name">Notifications</span>
-                </li>
-                <li class="sidebar-item">
-                    <i class="fa fa-check-square"></i><span class="item-name">Attendance</span>
-                </li>
-                <li class="sidebar-item">
-                    <i class="fa fa-clock-o"></i><span class="item-name">Time Table</span>
-                </li>
-                <li class="sidebar-item">
-                    <i class="fa fa-bullhorn"></i><span class="item-name">Announcements</span>
-                </li>
-                <li class="sidebar-item">
-                    <i class="fa fa-money"></i><span class="item-name">Fee</span>
-                </li>
-            </ul>
-            <ul id="special-sidebar-items">
-                <li class="sidebar-item">
-                    <i class="fa fa-cog"></i><span class="item-name">Settings</span>
-                </li>
-            </ul>
-        </section>
-    </div>
-</aside>
 <main id="workspace" class="collapsed">
     <h1 id="workspace-title">Dashboard</h1>
     <div id="grid-wrapper">
         <div id="profile-tile">
             <div id="profile-img-holder">
-                <img src="https://fujifilm-x.com/wp-content/uploads/2019/08/xc16-50mmf35-56-ois-2_sample-images03.jpg" />
+                <!--<img
+                    src="https://fujifilm-x.com/wp-content/uploads/2019/08/xc16-50mmf35-56-ois-2_sample-images03.jpg" />-->
+                <img src="/media/{{avatar}}" />
             </div>
             <div id="profile-txt-holder">
-                <h1>Hi, <span class="teacher-name">Tushar</span></h1>
+                <h1>Hi, <span class="teacher-name">{{name}}</span></h1>
                 <table>
                     <tr>
                         <td>
@@ -77,7 +33,9 @@
                             Classes:
                         </td>
                         <td>
-                            <span class="class">10</span><span class="class">11</span><span class="class">12</span>
+                            {% for class in classes %}
+                            <span class="class">{{class}}</span>
+                            {% endfor %}
                         </td>
                     </tr>
                     <tr>
@@ -109,5 +67,4 @@
     </div>
 </main>
 
-<script src="../../static/js/sidebar_navigator.js"></script>
 {% endblock body%}

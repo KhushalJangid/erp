@@ -17,14 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from Accounts.views import home
+from django.conf import settings
+from django.conf.urls.static import static
 
 admin.site.site_header = "Solution ONE"
 admin.site.site_title = "Solution ONE | Admin"
 admin.site.index_title = "Welcome to Admin Control Pannel"
 
 urlpatterns = [
-    path("",home),
+    path("",home,name="home"),
     path("admin/", admin.site.urls),
     path("accounts/",include("Accounts.urls")),
-    path("attendance/",include("Attendance.urls")),
-]
+    path("attendance/",include("Attendance.urls"),name="attendance"),
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -1,3 +1,4 @@
+from json import loads
 from django.http import HttpResponse
 from django.contrib.auth import logout, login, authenticate
 from django.shortcuts import redirect, render
@@ -13,7 +14,16 @@ def home(request):
     if request.user.post == "ad":
         return render(request,"dashboard_teacher.html")
     elif request.user.post == "fc":
-        return render(request,"dashboard_teacher.html")
+        user = request.user
+        fc = Faculty.objects.get(user=user)
+        classes = loads(fc.classes)
+        classes = list(map(lambda x: x.replace("_"," "),classes))
+        ctx = {
+            "avatar": user.avatar,
+            "name":f"{user.first_name} {user.last_name}",
+            "classes":classes,
+        }
+        return render(request,"dashboard_teacher.html",ctx)
     else:
         return render(request,"dashboard_teacher.html")
 
