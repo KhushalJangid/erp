@@ -19,7 +19,7 @@
                 </button>
             </td>
             <td>
-                <h1 id="workspace-title">Class 1B</h1>
+                <h1 id="workspace-title">Class {{class}}</h1>
             </td>
         </tr>
     </table>
@@ -78,6 +78,6 @@
         </form>
     </section>
 </main>
-<script src="../../static/js/sidebar_navigator.js"></script>
+<script src="{% static 'js/sidebar_navigator.js'%}"></script>
 <script src="{% static 'js/attendance_marker.js' %}"></script>
 {% endblock body %}

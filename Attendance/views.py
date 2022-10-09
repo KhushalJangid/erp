@@ -94,7 +94,7 @@ def view(request,_class,section):
                     }
                     idx+=1
             context = {
-                "class":_class,
+                "class":f"{_class} {section}",
                 "section":section,
                 "data":data
                 }
@@ -170,7 +170,7 @@ def edit(request,_class,section):
                     }
                     idx+=1
             context = {
-                "class":_class,
+                "class":f"{_class} {section}",
                 "section":section,
                 "date":date,
                 "data":data

@@ -1,28 +1,45 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/add_faculty.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'css/add_student.css' %}" />
-{% endblock head %}
-{% block title %}Add a Student{% endblock title %}
-{% block body %}
-<div class="d-flex p-8">
-    <form method="post" class="m-auto">
-        {% csrf_token %}
-        <div class="glass">
-            <h1 style="font-size:36px; padding:2rem;">Login</h1>
-            <div class="d-flex mv-5">
-                <h2 class="form-label">Username</h2>
-                <input name="username" type="text" class="form-input">
-            </div>
-            <div class="d-flex mv-5">
-                <h2 class="form-label">Password</h2>
-                <input name="password" type="password" class="form-input">
-            </div>
-            <button class="btn" type="submit">Login</button>
-        </div>
-    </form>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<script src="" async defer></script>
-{% endblock body %}
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_faculty.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_student.css' %}" />
+    <title>Add a Student</title>
+</head>
+
+<body>
+    <header>
+        <img src="{% static 'assets/logo.svg' %}" class="logo-in-header">
+        <nav id="header-tools">
+            <img src="{% static 'icons/info-circle.svg'%}" class="icon user-interactive">
+            <img src="{% static 'icons/about-icon.svg'%}" class="icon user-interactive">
+        </nav>
+    </header>
+    <div class="d-flex p-8">
+        <form method="post" class="m-auto">
+            {% csrf_token %}
+            <div class="glass">
+                <h1 style="font-size:36px; padding:2rem;">Login</h1>
+                <div class="d-flex mv-5">
+                    <h2 class="form-label">Username</h2>
+                    <input name="username" type="text" class="form-input">
+                </div>
+                <div class="d-flex mv-5">
+                    <h2 class="form-label">Password</h2>
+                    <input name="password" type="password" class="form-input">
+                </div>
+                <button class="btn" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="" async defer></script>
+</body>
+
+</html>

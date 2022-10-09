@@ -166,7 +166,7 @@
                     <div class="progress-container">
                         <div class="progress-line"></div>
                     </div>
-                    <span class="progress-percentage"><span class="percentage-count">92</span>%</span>
+                    <span class="progress-percentage"><span class="percentage-count">100</span>%</span>
                 </td>
                 <td class="actions">
                     <button class="accent-theme user-interactive"
@@ -199,6 +199,22 @@
 </main>
 <script src="{% static 'js/attendance_progress_bar.js'%}"></script>
 <script>
+    var classes = document.getElementsByClassName("class-row");
+    var percentage;
+    let absent_count, present_count;
+    let cls, ab_cnt, pr_cnt;
+    for (i = 0; i < classes.length; i++) {
+        cls = classes[i];
+        if (cls.children[1].className == "absent-details") {
+            ab_cnt = cls.children[1];
+            absent_count = parseInt(ab_cnt.children[1].textContent);
+            pr_cnt = cls.children[2];
+            present_count = parseInt(pr_cnt.children[1].textContent);
+            pc = cls.children[3].children[0];
+            percentage = (present_count / (absent_count + present_count)) * 100;
+            setProgressValue(pc, percentage);
+        }
+    }
     document.getElementById("date-picker").max = new Date().toISOString().split("T")[0];
     params = new URLSearchParams(location.search);
     const date = params.get("date");
